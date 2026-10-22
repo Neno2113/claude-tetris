@@ -362,6 +362,7 @@ function init() {
 }
 
 document.addEventListener('keydown', e => {
+  if (document.activeElement === skinSelect) skinSelect.blur(); // el juego tiene prioridad sobre el select
   if (e.code === 'KeyP') { togglePause(); return; }
   if (paused || gameOver) return;
   switch (e.code) {
@@ -397,5 +398,5 @@ skinSelect.addEventListener('change', () => {
   skinSelect.blur(); // evita que flechas/Space cambien el select
 });
 
-init();
 applySkin(skinName);
+init();
